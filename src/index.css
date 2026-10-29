@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+  --ui-scale: 2;
+  font-size: calc(12px * var(--ui-scale));
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+main {
+  width: 100%;
+  box-sizing: border-box;
+}

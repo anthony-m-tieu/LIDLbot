@@ -1,0 +1,86 @@
+.navigation-bar {
+    --navigation-bar__tab-padding: 12px;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    flex-shrink: 0;
+    height: 100%;
+    isolation: isolate;
+    width: 351px;
+    justify-content: center;
+}
+
+.navigation-bar__indicator {
+    height: 2px;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    border-radius: 2px 2px 2px 2px;
+
+    width: calc(var(--indicator-width) - 2 * var(--navigation-bar__tab-padding));
+    transform: translateX(calc(var(--indicator-x) + var(--navigation-bar__tab-padding)));
+
+    transition:
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        width 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navigation-bar__indicator--ready {
+    transition:
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        width 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navigation-bar--configure
+.navigation-bar__indicator {
+    background: var(--ui-accent-green);
+}
+
+.navigation-bar--run
+.navigation-bar__indicator {
+    background: var(--ui-accent-red);
+}
+
+.navigation-bar__tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+    border: none;
+    background: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    height: 100%;
+    padding: 0px var(--navigation-bar__tab-padding) 24px var(--navigation-bar__tab-padding);
+    display: flex;
+    align-items: end;
+    box-sizing: border-box;
+    color: var(--font-h2);
+    transition:
+        background-color 100ms ease,
+        color 100ms ease
+}
+
+.navigation-bar--configure
+.navigation-bar__tab:hover {
+    background: var(--ui-accent-faint-green);
+    color: var(--ui-accent-green);
+}
+
+.navigation-bar--run
+.navigation-bar__tab:hover {
+    background: var(--ui-accent-faint-red);
+    color: var(--ui-accent-red);
+}
+
+.navigation-bar--configure
+.navigation-bar__tab[aria-current="page"] {
+    color: var(--ui-accent-green)
+}
+
+.navigation-bar--run
+.navigation-bar__tab[aria-current="page"] {
+    color: var(--ui-accent-red)
+}
