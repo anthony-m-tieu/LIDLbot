@@ -51,7 +51,7 @@
   color: var(--font-h2);
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 12px;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -63,7 +63,7 @@
 }
 
 .mode-toggle__icon {
-  width: 1.167rem;
+  width: 14px;
   height: auto;
   aspect-ratio: auto;
   align-self: center;

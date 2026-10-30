@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import type { ReactNode } from 'react';
-import type { AppMode } from '../types/mode';
+
+export type AppMode = 'configure' | 'run';
 
 type ModeContextType = {
     mode: AppMode;

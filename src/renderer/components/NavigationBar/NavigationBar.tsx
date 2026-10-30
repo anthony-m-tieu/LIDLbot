@@ -1,8 +1,7 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { useMode } from '../../contexts/ModeContext';
-import { useNavigation } from '../../contexts/NavigationContext';
-import type { ConfigureTabs, RunTabs } from '../../types/tabs';
+import { useNavigation, ConfigureTabs, RunTabs } from '../../contexts/NavigationContext';
 import './NavigationBar.css';
 
 const configureTabs: { id: ConfigureTabs; label: string }[] = [
@@ -45,8 +44,7 @@ export default function NavigationBar({
 
     const [indicator, setIndicator] = useState({
         left: 0,
-        width: 0,
-        ready: false,
+        width: 0
     });
 
     const updateIndicator = useCallback(() => {
@@ -60,8 +58,7 @@ export default function NavigationBar({
 
         setIndicator({
             left: buttonRect.left - navRect.left + nav.scrollLeft,
-            width: buttonRect.width,
-            ready: true,
+            width: buttonRect.width
         });
     }, [selectedTab]);
 
@@ -96,8 +93,7 @@ export default function NavigationBar({
 
     const indicatorStyle: IndicatorStyle = {
         '--indicator-x': `${indicator.left}px`,
-        '--indicator-width': `${indicator.width}px`,
-        visibility: indicator.ready ? 'visible' : 'hidden',
+        '--indicator-width': `${indicator.width}px`
     };
 
     return (

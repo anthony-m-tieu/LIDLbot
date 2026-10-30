@@ -1,6 +1,8 @@
 import { createContext, useContext, useState } from 'react';
 import type { ReactNode } from 'react';
-import type { ConfigureTabs, RunTabs } from '../types/tabs';
+
+export type ConfigureTabs = 'project' | 'sets' | 'modules' | 'blocks' | 'trial decks';
+export type RunTabs = 'project';
 
 type NavigationState = {
     configureTab: ConfigureTabs;

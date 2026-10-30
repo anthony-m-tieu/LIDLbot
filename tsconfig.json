@@ -8,7 +8,8 @@
     "esModuleInterop": true,
     "noImplicitAny": true,
     "sourceMap": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
   },
-  "include": ["src/**/*", "*.ts", "*.mts"]
+  "include": ["src/**/*", "*.ts", "*.mts", "vite/vite.renderer.config.mts", "vite/vite.preload.config.mts", "vite/vite.main.config.mts"]
 }
