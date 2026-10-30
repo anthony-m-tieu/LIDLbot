@@ -1,19 +1,19 @@
 .mode-toggle {
-  --toggle-padding: 3px;
   --toggle-gap: 6px;
+  --toggle-padding: 3px;
 
-  position: relative;
-  display: inline-flex;
   align-items: stretch;
-  gap: var(--toggle-gap);
-  padding: var(--toggle-padding);
-  border-radius: 10px;
-  border-width: 1px;
-  border-style: solid;
   border-color: var(--ui-stroke);
-  height: 44px;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
   box-sizing: border-box;
+  display: inline-flex;
+  gap: var(--toggle-gap);
+  height: 44px;
   isolation: isolate;
+  padding: var(--toggle-padding);
+  position: relative;
 
   transition: background-color 260ms ease;
 }
@@ -27,14 +27,14 @@
 }
 
 .mode-toggle__indicator {
-  position: absolute;
-  z-index: 0;
-  top: var(--toggle-padding);
-  bottom: var(--toggle-padding);
-  left: 0;
-  border-radius: 7px;
   background: var(--ui-fill-z1);
+  border-radius: 7px;
+  bottom: var(--toggle-padding);
   box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  left: 0;
+  position: absolute;
+  top: var(--toggle-padding);
+  z-index: 0;
 
   transition:
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -42,37 +42,35 @@
 }
 
 .mode-toggle__option {
-  position: relative;
-  z-index: 1;
-  border: 0;
-  padding: 6px 12px;
-  border-radius: 7px;
   background: transparent;
+  border-radius: 7px;
+  border: 0;
   color: var(--font-h2);
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 12px;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  position: relative;
   white-space: nowrap;
+  z-index: 1;
 }
 
 .mode-toggle__content {
-  display: inline-flex;
   align-items: center;
+  display: inline-flex;
   gap: 12px;
 }
 
 .mode-toggle__icon {
-  width: 14px;
-  height: auto;
-  aspect-ratio: auto;
-  align-self: center;
-  flex-shrink: 0;
-
-  background-color: currentColor;
-
-  mask: center / contain no-repeat;
   -webkit-mask: center / contain no-repeat;
+  align-self: center;
+  aspect-ratio: auto;
+  background-color: currentColor;
+  flex-shrink: 0;
+  height: auto;
+  mask: center / contain no-repeat;
+  width: 14px;
 }
 
 .mode-toggle--configure .mode-toggle__option[aria-pressed="true"] {

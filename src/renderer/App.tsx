@@ -1,13 +1,13 @@
+import Toolbar from './components/Toolbar/Toolbar';
 import { ModeProvider, useMode } from './contexts/ModeContext';
 import { NavigationProvider, useNavigation } from './contexts/NavigationContext';
-import TopBar from './components/TopBar/TopBar';
 
 function MainContent() {
   const { mode } = useMode();
   const { configureTab, runTab } = useNavigation();
 
   return (
-    <div style={{flex: "1", backgroundColor: "#F8F8FA"}}>
+    <div style={{ flex: "1", backgroundColor: "#F8F8FA" }}>
       <p>
         Current mode: <strong>{mode}</strong>
       </p>
@@ -26,8 +26,8 @@ export default function App() {
     <ModeProvider>
       <NavigationProvider>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <TopBar />
-        <MainContent/>
+          <Toolbar />
+          <MainContent />
         </div>
       </NavigationProvider>
     </ModeProvider>

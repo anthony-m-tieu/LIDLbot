@@ -11,5 +11,12 @@
     "resolveJsonModule": true,
     "jsx": "react-jsx",
   },
-  "include": ["src/**/*", "*.ts", "*.mts", "vite/vite.renderer.config.mts", "vite/vite.preload.config.mts", "vite/vite.main.config.mts"]
+  "include": [
+    "src/**/*",
+    "*.ts",
+    "*.mts",
+    "vite/vite.renderer.config.mts",
+    "vite/vite.preload.config.mts",
+    "vite/vite.main.config.mts"
+  ]
 }

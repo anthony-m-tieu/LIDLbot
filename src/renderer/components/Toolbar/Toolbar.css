@@ -1,0 +1,81 @@
+@property --navigation-ribbon-margin {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+/* Toolbar */
+.toolbar {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  gap: 16px;
+  height: 64px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0px 24px;
+  position: relative;
+  scrollbar-width: none;
+  width: 100%;
+
+  transition: --navigation-ribbon-margin 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.toolbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Toolbar Edge Gradients */
+.toolbar__edge-gradient-left,
+.toolbar__edge-gradient-right {
+  height: 64px;
+  position: absolute;
+  top: 0;
+  width: 20px;
+}
+
+.toolbar__edge-gradient-left {
+  background: linear-gradient(270deg, transparent 0%, var(--ui-fill-z1) 100%);
+  left: 0;
+}
+
+.toolbar__edge-gradient-right {
+  background: linear-gradient(90deg, transparent 0%, var(--ui-fill-z1) 100%);
+  right: 0;
+}
+
+/* Toolbar Contents */
+.toolbar__left,
+.toolbar__center,
+.toolbar__right {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+.toolbar__left {
+  flex: 1;
+  gap: 32px;
+  justify-content: left;
+  justify-self: start;
+  margin-right: var(--navigation-ribbon-margin);
+}
+
+.toolbar__center {
+  justify-content: center;
+  justify-self: center;
+}
+
+.toolbar__right {
+  flex: 1;
+  justify-content: end;
+  justify-self: end;
+  margin-left: var(--navigation-ribbon-margin);
+}
+
+.toolbar__logo {
+  color: var(--font-h1);
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
