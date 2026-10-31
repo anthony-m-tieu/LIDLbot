@@ -8,7 +8,9 @@ Running from Source Code:
 
 TODO:
 
-- [ ] Add separators between left, center, and right top bar sections
-- [ ] Add background and gradient on left and right top bar sections (so center does not appear behind them on animated mode transition)
 - [ ] Add app scaling option under Preferences
 - [ ] Add dark theme option under Preferences
+
+Completed \[Toolbar\]:
+- [x] Add separators between left, center, and right top bar sections
+- [x] Add background and gradient on left and right top bar sections (so center does not appear behind them on animated mode transition)

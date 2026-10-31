@@ -64,7 +64,7 @@ export default function NavigationMenu({
   }, [selectedTab]);
 
   useLayoutEffect(() => {
-    onMarginChange(mode === 'configure' ? 0 : -141);
+    onMarginChange(mode === 'configure' ? 0 : -139.96895);
     updateIndicator();
 
     const nav = navRef.current;

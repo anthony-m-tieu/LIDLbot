@@ -54,6 +54,7 @@
   position: relative;
   white-space: nowrap;
   z-index: 1;
+  pointer-events: auto;
 }
 
 .mode-toggle__content {
