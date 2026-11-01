@@ -52,7 +52,7 @@ export default function ModeToggle() {
       >
         <span className="mode-toggle__content">
           <span
-            className="mode-toggle__icon"
+            className="icon"
             style={{
               maskImage: `url("${iconConfigure}")`,
               WebkitMaskImage: `url("${iconConfigure}")`,
@@ -73,7 +73,7 @@ export default function ModeToggle() {
       >
         <span className="mode-toggle__content">
           <span
-            className="mode-toggle__icon"
+            className="icon"
             style={{
               maskImage: `url("${iconRun}")`,
               WebkitMaskImage: `url("${iconRun}")`,

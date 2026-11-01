@@ -26,7 +26,7 @@ const createWindow = () => {
       path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`),
     );
   }
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
 
 app.whenReady().then(() => {
@@ -42,4 +42,10 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+import { shell, ipcMain } from "electron";
+
+ipcMain.handle("open-external", async (_event, url: string) => {
+  await shell.openExternal(url);
 });

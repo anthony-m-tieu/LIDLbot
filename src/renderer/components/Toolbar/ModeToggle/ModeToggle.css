@@ -46,7 +46,6 @@
   border-radius: 7px;
   border: 0;
   color: var(--font-h2);
-  cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
   font-weight: 500;
@@ -61,17 +60,6 @@
   align-items: center;
   display: inline-flex;
   gap: 12px;
-}
-
-.mode-toggle__icon {
-  -webkit-mask: center / contain no-repeat;
-  align-self: center;
-  aspect-ratio: auto;
-  background-color: currentColor;
-  flex-shrink: 0;
-  height: auto;
-  mask: center / contain no-repeat;
-  width: 14px;
 }
 
 .mode-toggle--configure .mode-toggle__option[aria-pressed="true"] {

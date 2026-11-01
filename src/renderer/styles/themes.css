@@ -3,21 +3,22 @@
   color-scheme: light;
 
   /* Fill */
-  --ui-fill-z1: #FFFFFF;
-  --ui-fill-hover: #FAFAFA;
+  --ui-fill-z1: #ffffff;
+  --ui-fill-hover: #fafafa;
 
   /* Stroke */
-  --ui-stroke: #E7EAE5;
+  --ui-stroke: #e7eae5;
 
   /* Accent */
   --ui-accent-green: #699847;
-  --ui-accent-red: #A93F38;
-  --ui-accent-faint-green: #FAFBF9;
-  --ui-accent-faint-red: #FFFDFD;
+  --ui-accent-red: #a93f38;
+  --ui-accent-faint-green: #fafbf9;
+  --ui-accent-faint-red: #fcfbfb;
 
   /* Font */
   --font-h1: #313439;
-  --font-h2: #6D726B;
+  --font-h2: #6d726b;
+  --font-h3: #a5a8a3;
 }
 
 [data-theme="dark"] {

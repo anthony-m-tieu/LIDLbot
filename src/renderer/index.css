@@ -10,3 +10,18 @@ main {
   width: 100%;
   box-sizing: border-box;
 }
+
+.missing {
+  /* background: #ff00ff !important; */
+}
+
+.icon {
+  -webkit-mask: center / contain no-repeat;
+  align-self: center;
+  aspect-ratio: auto;
+  background-color: currentColor;
+  flex-shrink: 0;
+  height: auto;
+  mask: center / contain no-repeat;
+  width: 14px;
+}

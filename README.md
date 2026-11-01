@@ -2,7 +2,7 @@ Development Notes
 
 Running from Source Code:
 1. Clone project from GitHub
-2. Install node.js `v22.23.4 LTS` (`v26.13.0 LTS`, have not tried the other ones)
+2. Install node.js `v22.23.4 LTS` (`v26.13.0 LTS` does not work, have not tried the other ones)
 3. In project root folder, run `npm install`
 4. In project root folder, run `npm run start`
 

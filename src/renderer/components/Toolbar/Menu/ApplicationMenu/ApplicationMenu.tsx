@@ -9,6 +9,17 @@ import {
 import { createPortal } from "react-dom";
 import "../Menu.css";
 import "./ApplicationMenu.css";
+import DropdownMenu from "./DropdownMenu/DropdownMenu";
+import DropdownItem from "./DropdownMenu/DropdownItem/DropdownItem";
+import { useMode } from "../../../../contexts/ModeContext";
+import iconNewFile from "../../../../assets/icons/icon-new-file.svg";
+import iconFolder from "../../../../assets/icons/icon-folder.svg";
+import iconSave from "../../../../assets/icons/icon-save.svg";
+import iconMonitor from "../../../../assets/icons/icon-monitor.svg";
+import iconTheme from "../../../../assets/icons/icon-theme.svg";
+import iconHappy from "../../../../assets/icons/icon-happy.svg";
+import iconDocument from "../../../../assets/icons/icon-document.svg";
+import iconGithub from "../../../../assets/icons/icon-github.svg";
 
 const tabs = [
   { id: "file", label: "File" },
@@ -29,6 +40,7 @@ type DropdownPosition = {
 };
 
 export default function ApplicationMenu() {
+  const { mode } = useMode();
   const [selectedTab, setSelectedTab] = useState<TabId | null>(null);
   const [indicator, setIndicator] = useState({
     left: 0,
@@ -160,50 +172,186 @@ export default function ApplicationMenu() {
       {selectedTab &&
         dropdownPosition &&
         createPortal(
-          <div
+          <DropdownMenu
             ref={dropdownRef}
-            className="application-menu__dropdown"
-            role="menu"
             aria-label={`${
               tabs.find((tab) => tab.id === selectedTab)?.label
             } menu`}
-            style={{
-              top: dropdownPosition.top,
-              left: dropdownPosition.left,
-            }}
+            top={dropdownPosition.top}
+            left={dropdownPosition.left}
           >
             {selectedTab === "file" && (
               <>
-                <button role="tabitem" type="button" onClick={closeTab}>
-                  New Project
-                </button>
-                <button role="tabitem" type="button" onClick={closeTab}>
-                  Open Project
-                </button>
+                {mode === "configure" && (
+                  <DropdownItem
+                    icon={
+                      <span
+                        className="icon"
+                        style={{
+                          maskImage: `url("${iconNewFile}")`,
+                          WebkitMaskImage: `url("${iconNewFile}")`,
+                          aspectRatio: "14 / 14",
+                        }}
+                        aria-hidden="true"
+                      />
+                    }
+                    label="New Project"
+                    secondaryText="Ctrl N"
+                    onClick={closeTab}
+                  />
+                )}
+                <DropdownItem
+                  icon={
+                    <span
+                      className="icon"
+                      style={{
+                        maskImage: `url("${iconFolder}")`,
+                        WebkitMaskImage: `url("${iconFolder}")`,
+                        aspectRatio: "14 / 14",
+                      }}
+                      aria-hidden="true"
+                    />
+                  }
+                  label="Open Project"
+                  secondaryText="Ctrl O"
+                  onClick={closeTab}
+                />
+                {mode === "configure" && (
+                  <DropdownItem
+                    icon={
+                      <span
+                        className="icon"
+                        style={{
+                          maskImage: `url("${iconSave}")`,
+                          WebkitMaskImage: `url("${iconSave}")`,
+                          aspectRatio: "14 / 14",
+                        }}
+                        aria-hidden="true"
+                      />
+                    }
+                    label="Save Project"
+                    secondaryText="Ctrl S"
+                    onClick={closeTab}
+                  />
+                )}
+                {mode === "configure" && (
+                  <DropdownItem
+                    icon={
+                      <span
+                        style={{
+                          display: "inline-block",
+                          width: "14px",
+                          height: "14px",
+                          flexShrink: 0,
+                        }}
+                        aria-hidden="true"
+                      />
+                    }
+                    label="Save Project As"
+                    secondaryText="Shift Ctrl S"
+                    onClick={closeTab}
+                  />
+                )}
                 <div className="application-menu__separator" />
-                <button role="tabitem" type="button" onClick={closeTab}>
-                  Save Project
-                </button>
+                <DropdownItem
+                  label="Current File:"
+                  secondaryText="sample_experiment.xlsx"
+                  disabled
+                />
               </>
             )}
 
             {selectedTab === "preferences" && (
-              <button role="menuitem" type="button" onClick={closeTab}>
-                Settings
-              </button>
+              <>
+                <DropdownItem
+                  icon={
+                    <span
+                      className="icon"
+                      style={{
+                        maskImage: `url("${iconMonitor}")`,
+                        WebkitMaskImage: `url("${iconMonitor}")`,
+                        aspectRatio: "14 / 14",
+                      }}
+                      aria-hidden="true"
+                    />
+                  }
+                  label="App Scale"
+                  onClick={closeTab}
+                />
+                <DropdownItem
+                  icon={
+                    <span
+                      className="icon"
+                      style={{
+                        maskImage: `url("${iconTheme}")`,
+                        WebkitMaskImage: `url("${iconTheme}")`,
+                        aspectRatio: "14 / 14",
+                      }}
+                      aria-hidden="true"
+                    />
+                  }
+                  label="App Theme"
+                  onClick={closeTab}
+                />
+                <DropdownItem
+                  icon={
+                    <span
+                      className="icon"
+                      style={{
+                        maskImage: `url("${iconHappy}")`,
+                        WebkitMaskImage: `url("${iconHappy}")`,
+                        aspectRatio: "14 / 14",
+                      }}
+                      aria-hidden="true"
+                    />
+                  }
+                  label="App Animations"
+                  secondaryText="Enabled"
+                  onClick={closeTab}
+                />
+              </>
             )}
 
             {selectedTab === "help" && (
               <>
-                <button role="menuitem" type="button" onClick={closeTab}>
-                  Documentation
-                </button>
-                <button role="menuitem" type="button" onClick={closeTab}>
-                  About
-                </button>
+                <DropdownItem
+                  icon={
+                    <span
+                      className="icon"
+                      style={{
+                        maskImage: `url("${iconDocument}")`,
+                        WebkitMaskImage: `url("${iconDocument}")`,
+                        aspectRatio: "14 / 14",
+                      }}
+                      aria-hidden="true"
+                    />
+                  }
+                  label="Documentation"
+                  onClick={closeTab}
+                />
+                <DropdownItem
+                  icon={
+                    <span
+                      className="icon"
+                      style={{
+                        maskImage: `url("${iconGithub}")`,
+                        WebkitMaskImage: `url("${iconGithub}")`,
+                        aspectRatio: "14 / 14",
+                      }}
+                      aria-hidden="true"
+                    />
+                  }
+                  label="GitHub"
+                  onClick={() => {
+                    closeTab();
+                    void window.electron.openExternal(
+                      "https://github.com/anthony-m-tieu/LIDLbot",
+                    );
+                  }}
+                />
               </>
             )}
-          </div>,
+          </DropdownMenu>,
           document.body,
         )}
     </>
