@@ -18,8 +18,10 @@ import iconSave from "../../../../assets/icons/icon-save.svg";
 import iconMonitor from "../../../../assets/icons/icon-monitor.svg";
 import iconTheme from "../../../../assets/icons/icon-theme.svg";
 import iconHappy from "../../../../assets/icons/icon-happy.svg";
+import iconSad from "../../../../assets/icons/icon-sad.svg";
 import iconDocument from "../../../../assets/icons/icon-document.svg";
 import iconGithub from "../../../../assets/icons/icon-github.svg";
+import { useAnimations } from "../../../../contexts/AnimationContext";
 
 const tabs = [
   { id: "file", label: "File" },
@@ -40,6 +42,7 @@ type DropdownPosition = {
 };
 
 export default function ApplicationMenu() {
+  const { animationsEnabled, toggleAnimations } = useAnimations();
   const { mode } = useMode();
   const [selectedTab, setSelectedTab] = useState<TabId | null>(null);
   const [indicator, setIndicator] = useState({
@@ -276,7 +279,42 @@ export default function ApplicationMenu() {
                     />
                   }
                   label="App Scale"
-                  onClick={closeTab}
+                  submenu={
+                    <DropdownMenu
+                      aria-label="app scale menu"
+                    >
+                      <DropdownItem
+                        label="50%"
+                        onClick={closeTab}
+                        selected={false}
+                        selectable={true}
+                      />
+                      <DropdownItem
+                        label="75%"
+                        onClick={closeTab}
+                        selected={false}
+                        selectable={true}
+                      />
+                      <DropdownItem
+                        label="100%"
+                        onClick={closeTab}
+                        selected={true}
+                        selectable={true}
+                      />
+                      <DropdownItem
+                        label="125%"
+                        onClick={closeTab}
+                        selected={false}
+                        selectable={true}
+                      />
+                      <DropdownItem
+                        label="150%"
+                        onClick={closeTab}
+                        selected={false}
+                        selectable={true}
+                      />
+                    </DropdownMenu>
+                  }
                 />
                 <DropdownItem
                   icon={
@@ -291,23 +329,46 @@ export default function ApplicationMenu() {
                     />
                   }
                   label="App Theme"
-                  onClick={closeTab}
+                  submenu={
+                    <DropdownMenu
+                      aria-label="app scale menu"
+                    >
+                      <DropdownItem
+                        label="Light"
+                        onClick={closeTab}
+                        selected={true}
+                        selectable={true}
+                      />
+                      <DropdownItem
+                        label="Dark"
+                        onClick={closeTab}
+                        selected={false}
+                        selectable={true}
+                      />
+                      <DropdownItem
+                        label="System"
+                        onClick={closeTab}
+                        selected={false}
+                        selectable={true}
+                      />
+                    </DropdownMenu>
+                  }
                 />
                 <DropdownItem
                   icon={
                     <span
                       className="icon"
                       style={{
-                        maskImage: `url("${iconHappy}")`,
-                        WebkitMaskImage: `url("${iconHappy}")`,
+                        maskImage: `url("${animationsEnabled ? iconHappy : iconSad}")`,
+                        WebkitMaskImage: `url("${animationsEnabled ? iconHappy : iconSad}")`,
                         aspectRatio: "14 / 14",
                       }}
                       aria-hidden="true"
                     />
                   }
                   label="App Animations"
-                  secondaryText="Enabled"
-                  onClick={closeTab}
+                  secondaryText={animationsEnabled ? "Enabled" : "Disabled"}
+                  onClick={() => { closeTab(); toggleAnimations(); }}
                 />
               </>
             )}

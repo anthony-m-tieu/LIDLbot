@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
+import iconCheck from "../../../../../../assets/icons/icon-check.svg";
 import "./DropdownItem.css";
 
 type DropdownItemProps = {
@@ -9,6 +10,8 @@ type DropdownItemProps = {
   onClick?: () => void;
   submenu?: ReactNode;
   disabled?: boolean;
+  selectable?: boolean;
+  selected?: boolean;
 };
 
 export default function DropdownItem({
@@ -17,13 +20,21 @@ export default function DropdownItem({
   secondaryText,
   onClick,
   submenu,
-  disabled,
+  selectable = false,
+  selected = false,
+  disabled = false,
 }: DropdownItemProps) {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   return (
-    <>
+    <div
+      className="dropdown-item-wrapper"
+      onMouseEnter={() => {
+        if (submenu && !disabled) setIsSubmenuOpen(true);
+      }}
+      onMouseLeave={() => setIsSubmenuOpen(false)}
+    >
       <button
-        className="dropdown-item"
+        className={`dropdown-item${selected ? " dropdown-item--selected" : ""}`}
         role="menuitem"
         type="button"
         onClick={onClick}
@@ -32,6 +43,28 @@ export default function DropdownItem({
         aria-expanded={submenu ? isSubmenuOpen : undefined}
       >
         <div className="dropdown-item-container-left">
+          {selectable && selected && (
+            <span
+              className="icon"
+              style={{
+                maskImage: `url("${iconCheck}")`,
+                WebkitMaskImage: `url("${iconCheck}")`,
+                aspectRatio: "14 / 14",
+              }}
+              aria-hidden="true"
+            />
+          )}
+          {selectable && !selected && (
+            <span
+              style={{
+                display: "inline-block",
+                width: "14px",
+                height: "14px",
+                flexShrink: 0,
+              }}
+              aria-hidden="true"
+            />
+          )}
           {icon && <span className="dropdown-item__icon">{icon}</span>}
           <span className="dropdown-item__label">{label}</span>
         </div>
@@ -39,7 +72,9 @@ export default function DropdownItem({
           <span className="dropdown-item__secondary-text">{secondaryText}</span>
         )}
       </button>
-      {submenu && isSubmenuOpen && { submenu }}
-    </>
+      {submenu && isSubmenuOpen && (
+        <div className="dropdown-item__submenu">{submenu}</div>
+      )}
+    </div>
   );
 }

@@ -1,6 +1,10 @@
-import Toolbar from './components/Toolbar/Toolbar';
-import { ModeProvider, useMode } from './contexts/ModeContext';
-import { NavigationProvider, useNavigation } from './contexts/NavigationContext';
+import Toolbar from "./components/Toolbar/Toolbar";
+import { ModeProvider, useMode } from "./contexts/ModeContext";
+import {
+  NavigationProvider,
+  useNavigation,
+} from "./contexts/NavigationContext";
+import { AnimationProvider } from "./contexts/AnimationContext";
 
 function MainContent() {
   const { mode } = useMode();
@@ -8,7 +12,7 @@ function MainContent() {
 
   return (
     <div style={{ flex: "1", backgroundColor: "#F8F8FA" }}>
-      <p>
+      {/* <p>
         Current mode: <strong>{mode}</strong>
       </p>
       <p>
@@ -16,20 +20,28 @@ function MainContent() {
       </p>
       <p>
         Current run tab: <strong>{runTab}</strong>
-      </p>
+      </p> */}
     </div>
   );
 }
 
 export default function App() {
   return (
-    <ModeProvider>
-      <NavigationProvider>
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <Toolbar />
-          <MainContent />
-        </div>
-      </NavigationProvider>
-    </ModeProvider>
+    <AnimationProvider>
+      <ModeProvider>
+        <NavigationProvider>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              minHeight: "100vh",
+            }}
+          >
+            <Toolbar />
+            <MainContent />
+          </div>
+        </NavigationProvider>
+      </ModeProvider>
+    </AnimationProvider>
   );
 }

@@ -25,3 +25,10 @@ main {
   mask: center / contain no-repeat;
   width: 14px;
 }
+
+body.animations-disabled *,
+body.animations-disabled *::before,
+body.animations-disabled *::after {
+  transition: none !important;
+  animation: none !important;
+}

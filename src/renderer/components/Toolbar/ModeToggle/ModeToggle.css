@@ -4,7 +4,7 @@
 
   align-items: stretch;
   border-color: var(--ui-stroke);
-  border-radius: 10px;
+  border-radius: 8px;
   border-style: solid;
   border-width: 1px;
   box-sizing: border-box;
@@ -28,7 +28,7 @@
 
 .mode-toggle__indicator {
   background: var(--ui-fill-z1);
-  border-radius: 7px;
+  border-radius: 5px;
   bottom: var(--toggle-padding);
   box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
   left: 0;
@@ -43,7 +43,7 @@
 
 .mode-toggle__option {
   background: transparent;
-  border-radius: 7px;
+  border-radius: 5px;
   border: 0;
   color: var(--font-h2);
   font-family: "Montserrat", sans-serif;
