@@ -1,10 +1,70 @@
+@property --ui-fill-z0 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f8f8fa;
+}
+
+@property --ui-fill-z1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --ui-stroke {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e7eae5;
+}
+
+@property --ui-accent-green {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #699847;
+}
+
+@property --ui-accent-red {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #a93f38;
+}
+
+@property --ui-accent-faint-green {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fafbf9;
+}
+
+@property --ui-accent-faint-red {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fcfbfb;
+}
+
+@property --font-h1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #313439;
+}
+
+@property --font-h2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #6d726b;
+}
+
+@property --font-h3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #a5a8a3;
+}
+
 :root,
 [data-theme="light"] {
   color-scheme: light;
 
   /* Fill */
+  --ui-fill-z0: #f8f8fa;
   --ui-fill-z1: #ffffff;
-  --ui-fill-hover: #fafafa;
 
   /* Stroke */
   --ui-stroke: #e7eae5;
@@ -23,4 +83,33 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
+
+  /* Fill */
+  --ui-fill-z0: #171d24;
+  --ui-fill-z1: #171d24;
+
+  /* Stroke */
+  --ui-stroke: #2b3137;
+
+  /* Accent */
+  --ui-accent-green: #9cbe8c;
+  --ui-accent-red: #f58582;
+  --ui-accent-faint-green: #282f32;
+  --ui-accent-faint-red: #282a30;
+
+  /* Font */
+  --font-h1: #fbfbfc;
+  --font-h2: #c3c9cf;
+  --font-h3: #a5a8a3;
+}
+
+:root {
+  transition-property:
+    --ui-fill-z0, --ui-fill-z1, --ui-stroke, --ui-accent-green, --ui-accent-red,
+    --ui-accent-faint-green, --ui-accent-faint-red, --font-h1, --font-h2,
+    --font-h3;
+
+  transition-duration: 1000ms;
+
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }

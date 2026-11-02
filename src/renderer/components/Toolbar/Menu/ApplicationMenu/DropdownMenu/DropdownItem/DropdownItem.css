@@ -15,7 +15,7 @@
 }
 
 .dropdown-item--selected {
-  color: var(--ui-accent-green);
+  color: var(--ui-accent-red);
 }
 
 .dropdown-item-wrapper {
@@ -24,8 +24,8 @@
 }
 
 .dropdown-item:not(:disabled):hover {
-  background: var(--ui-accent-faint-green);
-  color: var(--ui-accent-green);
+  background: var(--ui-accent-faint-red);
+  color: var(--ui-accent-red);
 }
 
 .dropdown-item-container-left {
@@ -66,4 +66,15 @@
   position: relative;
   top: auto;
   left: auto;
+}
+
+.expand-arrow {
+  -webkit-mask: center / contain no-repeat;
+  align-self: center;
+  aspect-ratio: auto;
+  background-color: currentColor;
+  flex-shrink: 0;
+  height: auto;
+  mask: center / contain no-repeat;
+  width: 14px;
 }

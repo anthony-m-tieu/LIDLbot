@@ -1,12 +1,15 @@
 /* Application Menu Indicator */
 .application-menu__indicator {
-  background: var(--font-h1);
+  background: var(--ui-accent-red);
 }
 
-.application-menu__tab:hover,
+.application-menu__tab:hover {
+  background: var(--ui-accent-faint-red);
+  color: var(--ui-accent-red);
+}
+
 .application-menu__tab[aria-expanded="true"] {
-  background: var(--ui-fill-hover);
-  color: var(--font-h1);
+  color: var(--ui-accent-red);
 }
 
 /* Application Menu Dropdown */

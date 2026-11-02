@@ -1,5 +1,10 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
-import { useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 
 type AnimationContextType = {
   animationsEnabled: boolean;
@@ -8,14 +13,17 @@ type AnimationContextType = {
 };
 
 const AnimationContext = createContext<AnimationContextType | undefined>(
-  undefined,
+  undefined
 );
 
 export function AnimationProvider({ children }: { children: ReactNode }) {
   const [animationsEnabled, setAnimationsEnabled] = useState(true);
 
   useEffect(() => {
-    document.body.classList.toggle("animations-disabled", !animationsEnabled);
+    document.documentElement.classList.toggle(
+      "animations-disabled",
+      !animationsEnabled
+    );
   }, [animationsEnabled]);
 
   const toggleAnimations = () => {

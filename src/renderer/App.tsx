@@ -5,13 +5,14 @@ import {
   useNavigation,
 } from "./contexts/NavigationContext";
 import { AnimationProvider } from "./contexts/AnimationContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 function MainContent() {
   const { mode } = useMode();
   const { configureTab, runTab } = useNavigation();
 
   return (
-    <div style={{ flex: "1", backgroundColor: "#F8F8FA" }}>
+    <div style={{ flex: "1", backgroundColor: "var(--ui-fill-z0)" }}>
       {/* <p>
         Current mode: <strong>{mode}</strong>
       </p>
@@ -28,20 +29,22 @@ function MainContent() {
 export default function App() {
   return (
     <AnimationProvider>
-      <ModeProvider>
-        <NavigationProvider>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              minHeight: "100vh",
-            }}
-          >
-            <Toolbar />
-            <MainContent />
-          </div>
-        </NavigationProvider>
-      </ModeProvider>
+      <ThemeProvider>
+        <ModeProvider>
+          <NavigationProvider>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                minHeight: "100vh",
+              }}
+            >
+              <Toolbar />
+              <MainContent />
+            </div>
+          </NavigationProvider>
+        </ModeProvider>
+      </ThemeProvider>
     </AnimationProvider>
   );
 }

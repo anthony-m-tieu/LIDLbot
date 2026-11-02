@@ -22,6 +22,7 @@ import iconSad from "../../../../assets/icons/icon-sad.svg";
 import iconDocument from "../../../../assets/icons/icon-document.svg";
 import iconGithub from "../../../../assets/icons/icon-github.svg";
 import { useAnimations } from "../../../../contexts/AnimationContext";
+import { useTheme } from "../../../../contexts/ThemeContext";
 
 const tabs = [
   { id: "file", label: "File" },
@@ -42,6 +43,7 @@ type DropdownPosition = {
 };
 
 export default function ApplicationMenu() {
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const { animationsEnabled, toggleAnimations } = useAnimations();
   const { mode } = useMode();
   const [selectedTab, setSelectedTab] = useState<TabId | null>(null);
@@ -182,6 +184,7 @@ export default function ApplicationMenu() {
             } menu`}
             top={dropdownPosition.top}
             left={dropdownPosition.left}
+            minWidth={selectedTab === "preferences" ? 235 : undefined}
           >
             {selectedTab === "file" && (
               <>
@@ -335,20 +338,20 @@ export default function ApplicationMenu() {
                     >
                       <DropdownItem
                         label="Light"
-                        onClick={closeTab}
-                        selected={true}
+                        onClick={() => { closeTab(); setTheme("light"); }}
+                        selected={theme === "light"}
                         selectable={true}
                       />
                       <DropdownItem
                         label="Dark"
-                        onClick={closeTab}
-                        selected={false}
+                        onClick={() => { closeTab(); setTheme("dark"); }}
+                        selected={theme === "dark"}
                         selectable={true}
                       />
                       <DropdownItem
                         label="System"
-                        onClick={closeTab}
-                        selected={false}
+                        onClick={() => { closeTab(); setTheme("system"); }}
+                        selected={theme === "system"}
                         selectable={true}
                       />
                     </DropdownMenu>
@@ -368,7 +371,7 @@ export default function ApplicationMenu() {
                   }
                   label="App Animations"
                   secondaryText={animationsEnabled ? "Enabled" : "Disabled"}
-                  onClick={() => { closeTab(); toggleAnimations(); }}
+                  onClick={() => { toggleAnimations(); }}
                 />
               </>
             )}

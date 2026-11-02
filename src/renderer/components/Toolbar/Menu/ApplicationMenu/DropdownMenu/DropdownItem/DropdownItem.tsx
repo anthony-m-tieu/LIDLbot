@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 import iconCheck from "../../../../../../assets/icons/icon-check.svg";
+import iconExpandArrow from "../../../../../../assets/icons/icon-expand-arrow.svg";
 import "./DropdownItem.css";
 
 type DropdownItemProps = {
@@ -71,6 +72,17 @@ export default function DropdownItem({
         {secondaryText && (
           <span className="dropdown-item__secondary-text">{secondaryText}</span>
         )}
+        {submenu && (
+            <span
+              className="expand-arrow"
+              style={{
+                maskImage: `url("${iconExpandArrow}")`,
+                WebkitMaskImage: `url("${iconExpandArrow}")`,
+                aspectRatio: "6.9 / 4.45",
+              }}
+              aria-hidden="true"
+            />
+          )}
       </button>
       {submenu && isSubmenuOpen && (
         <div className="dropdown-item__submenu">{submenu}</div>

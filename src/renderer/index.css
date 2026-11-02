@@ -26,9 +26,10 @@ main {
   width: 14px;
 }
 
-body.animations-disabled *,
-body.animations-disabled *::before,
-body.animations-disabled *::after {
+:root.animations-disabled,
+:root.animations-disabled *,
+:root.animations-disabled *::before,
+:root.animations-disabled *::after {
   transition: none !important;
   animation: none !important;
 }

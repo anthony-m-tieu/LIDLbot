@@ -7,6 +7,7 @@ type DropdownMenuProps = {
   top?: number;
   left?: number;
   ref?: Ref<HTMLDivElement>;
+  minWidth?: number;
 };
 
 export default function DropdownMenu({
@@ -15,6 +16,7 @@ export default function DropdownMenu({
   top,
   left,
   ref,
+  minWidth,
 }: DropdownMenuProps) {
   return (
     <div 
@@ -24,7 +26,8 @@ export default function DropdownMenu({
       aria-label={aria_label}
       style={{
         top,
-        left
+        left,
+        minWidth
       }}
     >
       {children}

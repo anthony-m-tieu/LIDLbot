@@ -9,8 +9,16 @@ Running from Source Code:
 TODO:
 
 - [ ] Add app scaling option under Preferences
-- [ ] Add dark theme option under Preferences
+- [ ] Make accent change with mode
+- [ ] Fix sizing and positioning of dropdown item expanding arrow
+- [ ] Fix dark mode colouring of mode toggle and dropdown menus
+- [ ] Local storage of app preferences
+
 
 Completed \[Toolbar\]:
 - [x] Add separators between left, center, and right top bar sections
 - [x] Add background and gradient on left and right top bar sections (so center does not appear behind them on animated mode transition)
+- [x] Add dark theme option under Preferences
+- [x] Add animation toggle under Preferences
+- [x] Remove 'New Project', 'Save Project', and 'Save Project As' options on 'Run' mode
+- [x] Fix theme change failing to update Toolbar background when window is small
