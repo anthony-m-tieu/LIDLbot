@@ -74,11 +74,11 @@ export default function DropdownItem({
         )}
         {submenu && (
             <span
-              className="expand-arrow"
+              className="icon"
               style={{
                 maskImage: `url("${iconExpandArrow}")`,
                 WebkitMaskImage: `url("${iconExpandArrow}")`,
-                aspectRatio: "6.9 / 4.45",
+                aspectRatio: "14 / 10",
               }}
               aria-hidden="true"
             />

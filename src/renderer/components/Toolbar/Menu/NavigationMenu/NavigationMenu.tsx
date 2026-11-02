@@ -100,7 +100,7 @@ export default function NavigationMenu({
   return (
     <nav
       ref={navRef}
-      className={`menu navigation-menu navigation-menu--${mode}`}
+      className="menu navigation-menu"
       aria-label={`${mode} navigation menu`}
     >
       <span

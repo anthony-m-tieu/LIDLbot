@@ -12,7 +12,7 @@ function MainContent() {
   const { configureTab, runTab } = useNavigation();
 
   return (
-    <div style={{ flex: "1", backgroundColor: "var(--ui-fill-z0)" }}>
+    <div className="body">
       {/* <p>
         Current mode: <strong>{mode}</strong>
       </p>
@@ -33,6 +33,7 @@ export default function App() {
         <ModeProvider>
           <NavigationProvider>
             <div
+            className="body"
               style={{
                 display: "flex",
                 flexDirection: "column",

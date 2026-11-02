@@ -15,15 +15,13 @@
   padding: var(--toggle-padding);
   position: relative;
 
-  transition: background-color 260ms ease;
-}
+  --mode-toggle-background: color-mix(
+    in srgb,
+    var(--ui-accent-faint) calc((1 - var(--theme-progress)) * 100%),
+    var(--ui-fill-z0) calc(var(--theme-progress) * 100%)
+  );
 
-.mode-toggle--configure {
-  background: var(--ui-accent-faint-green);
-}
-
-.mode-toggle--run {
-  background: var(--ui-accent-faint-red);
+  background: var(--mode-toggle-background);
 }
 
 .mode-toggle__indicator {
@@ -39,6 +37,14 @@
   transition:
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
     width 260ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  --mode-toggle__indicator-background: color-mix(
+    in srgb,
+    var(--ui-fill-z1) calc((1 - var(--theme-progress)) * 100%),
+    var(--ui-accent-faint) calc(var(--theme-progress) * 100%)
+  );
+
+  background: var(--mode-toggle__indicator-background);
 }
 
 .mode-toggle__option {
@@ -62,10 +68,6 @@
   gap: 12px;
 }
 
-.mode-toggle--configure .mode-toggle__option[aria-pressed="true"] {
-  color: var(--ui-accent-green);
-}
-
-.mode-toggle--run .mode-toggle__option[aria-pressed="true"] {
-  color: var(--ui-accent-red);
+.mode-toggle__option[aria-pressed="true"] {
+  color: var(--ui-accent);
 }

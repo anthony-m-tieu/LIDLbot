@@ -19,8 +19,8 @@ export default function Toolbar() {
     if (!left || !right) return;
 
     const observer = new ResizeObserver(() => {
-      setLeftNarrow(left.getBoundingClientRect().width <= 311);
-      setRightNarrow(right.getBoundingClientRect().width <= 221);
+      setLeftNarrow(left.getBoundingClientRect().width <= 312);
+      setRightNarrow(right.getBoundingClientRect().width <= 222);
     });
 
     observer.observe(left);

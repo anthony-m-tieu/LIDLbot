@@ -7,6 +7,13 @@
   padding: 3px;
   border: 1px solid var(--ui-stroke);
   border-radius: 8px;
-  background: var(--ui-fill-z1);
   box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+
+  --dropdown-menu-background: color-mix(
+    in srgb,
+    var(--ui-fill-z1) calc((1 - var(--theme-progress)) * 100%),
+    var(--ui-fill-z0) calc(var(--theme-progress) * 100%)
+  );
+
+  background: var(--dropdown-menu-background);
 }

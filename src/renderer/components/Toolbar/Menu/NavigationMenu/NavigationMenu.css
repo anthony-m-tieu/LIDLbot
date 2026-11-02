@@ -4,28 +4,15 @@
   width: 347.391px;
 }
 
-.navigation-menu--configure .navigation-menu__indicator {
-  background: var(--ui-accent-green);
+.navigation-menu__indicator {
+  background: var(--ui-accent);
 }
 
-.navigation-menu--run .navigation-menu__indicator {
-  background: var(--ui-accent-red);
+.navigation-menu__tab:hover {
+  background: var(--ui-accent-faint);
+  color: var(--ui-accent);
 }
 
-.navigation-menu--configure .navigation-menu__tab:hover {
-  background: var(--ui-accent-faint-green);
-  color: var(--ui-accent-green);
-}
-
-.navigation-menu--run .navigation-menu__tab:hover {
-  background: var(--ui-accent-faint-red);
-  color: var(--ui-accent-red);
-}
-
-.navigation-menu--configure .navigation-menu__tab[aria-current="page"] {
-  color: var(--ui-accent-green);
-}
-
-.navigation-menu--run .navigation-menu__tab[aria-current="page"] {
-  color: var(--ui-accent-red);
+.navigation-menu__tab[aria-current="page"] {
+  color: var(--ui-accent);
 }

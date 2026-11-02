@@ -1,7 +1,13 @@
-import type { ReactNode } from 'react';
-import { createContext, useContext, useState } from 'react';
 
-export type AppMode = 'configure' | 'run';
+import {
+  createContext,
+  useContext,
+  useLayoutEffect,
+  useState,
+  type ReactNode,
+} from "react";
+
+export type AppMode = "configure" | "run";
 
 type ModeContextType = {
   mode: AppMode;
@@ -11,7 +17,11 @@ type ModeContextType = {
 const ModeContext = createContext<ModeContextType | undefined>(undefined);
 
 export function ModeProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<AppMode>('configure');
+  const [mode, setMode] = useState<AppMode>("configure");
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.mode = mode;
+  }, [mode]);
 
   return (
     <ModeContext.Provider value={{ mode, setMode }}>
@@ -22,8 +32,10 @@ export function ModeProvider({ children }: { children: ReactNode }) {
 
 export function useMode() {
   const context = useContext(ModeContext);
+
   if (!context) {
-    throw new Error('useMode must be used within a ModeProvider');
+    throw new Error("useMode must be used within ModeProvider");
   }
+
   return context;
 }

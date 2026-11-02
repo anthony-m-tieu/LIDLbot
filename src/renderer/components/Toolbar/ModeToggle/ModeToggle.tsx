@@ -35,7 +35,7 @@ export default function ModeToggle() {
   }, [mode]);
 
   return (
-    <div className={`mode-toggle mode-toggle--${mode}`}>
+    <div className="mode-toggle">
       <span
         className="mode-toggle__indicator"
         style={{

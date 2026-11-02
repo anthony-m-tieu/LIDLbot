@@ -19,6 +19,13 @@
   background: var(--ui-fill-z1);
 
   transition: --navigation-ribbon-margin 260ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  --toolbar-stroke: color-mix(
+    in srgb,
+    transparent calc((1 - var(--theme-progress)) * 100%),
+    var(--ui-stroke) calc(var(--theme-progress) * 100%)
+  );
+  outline: 2px solid var(--toolbar-stroke);
 }
 
 .toolbar::-webkit-scrollbar {

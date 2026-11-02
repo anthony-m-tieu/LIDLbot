@@ -16,28 +16,16 @@
   initial-value: #e7eae5;
 }
 
-@property --ui-accent-green {
+@property --ui-accent {
   syntax: "<color>";
   inherits: true;
   initial-value: #699847;
 }
 
-@property --ui-accent-red {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #a93f38;
-}
-
-@property --ui-accent-faint-green {
+@property --ui-accent-faint {
   syntax: "<color>";
   inherits: true;
   initial-value: #fafbf9;
-}
-
-@property --ui-accent-faint-red {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #fcfbfb;
 }
 
 @property --font-h1 {
@@ -58,6 +46,18 @@
   initial-value: #a5a8a3;
 }
 
+@property --theme-progress {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --mode-progress {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
 :root,
 [data-theme="light"] {
   color-scheme: light;
@@ -69,12 +69,6 @@
   /* Stroke */
   --ui-stroke: #e7eae5;
 
-  /* Accent */
-  --ui-accent-green: #699847;
-  --ui-accent-red: #a93f38;
-  --ui-accent-faint-green: #fafbf9;
-  --ui-accent-faint-red: #fcfbfb;
-
   /* Font */
   --font-h1: #313439;
   --font-h2: #6d726b;
@@ -85,17 +79,11 @@
   color-scheme: dark;
 
   /* Fill */
-  --ui-fill-z0: #171d24;
+  --ui-fill-z0: #1f252c;
   --ui-fill-z1: #171d24;
 
   /* Stroke */
   --ui-stroke: #2b3137;
-
-  /* Accent */
-  --ui-accent-green: #9cbe8c;
-  --ui-accent-red: #f58582;
-  --ui-accent-faint-green: #282f32;
-  --ui-accent-faint-red: #282a30;
 
   /* Font */
   --font-h1: #fbfbfc;
@@ -104,12 +92,75 @@
 }
 
 :root {
-  transition-property:
-    --ui-fill-z0, --ui-fill-z1, --ui-stroke, --ui-accent-green, --ui-accent-red,
-    --ui-accent-faint-green, --ui-accent-faint-red, --font-h1, --font-h2,
-    --font-h3;
+  --theme-progress: 0;
+  --mode-progress: 0;
 
-  transition-duration: 1000ms;
+  transition-property:
+    --ui-fill-z0, --ui-fill-z1, --ui-stroke, --font-h1, --font-h2, --font-h3,
+    --theme-progress, --mode-progress;
+
+  transition-duration:
+    1000ms, 1000ms, 1000ms, 1000ms, 1000ms, 1000ms, 1000ms, 260ms;
 
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  /* Configure accent */
+  --accent-configure: color-mix(
+    in srgb,
+    #699847 calc((1 - var(--theme-progress)) * 100%),
+    #9cbe8c calc(var(--theme-progress) * 100%)
+  );
+
+  /* Run accent */
+  --accent-run: color-mix(
+    in srgb,
+    #a93f38 calc((1 - var(--theme-progress)) * 100%),
+    #f58582 calc(var(--theme-progress) * 100%)
+  );
+
+  /* Final accent */
+  --ui-accent: color-mix(
+    in srgb,
+    var(--accent-configure) calc((1 - var(--mode-progress)) * 100%),
+    var(--accent-run) calc(var(--mode-progress) * 100%)
+  );
+
+  /* Configure faint accent */
+  --accent-faint-configure: color-mix(
+    in srgb,
+    #fafbf9 calc((1 - var(--theme-progress)) * 100%),
+    #282f32 calc(var(--theme-progress) * 100%)
+  );
+
+  /* Run faint accent */
+  --accent-faint-run: color-mix(
+    in srgb,
+    #fcfbfb calc((1 - var(--theme-progress)) * 100%),
+    #282a30 calc(var(--theme-progress) * 100%)
+  );
+
+  /* Final faint accent */
+  --ui-accent-faint: color-mix(
+    in srgb,
+    var(--accent-faint-configure) calc((1 - var(--mode-progress)) * 100%),
+    var(--accent-faint-run) calc(var(--mode-progress) * 100%)
+  );
+}
+
+:root[data-theme="light"] {
+  --theme-progress: 0;
+}
+
+:root[data-theme="dark"] {
+  --theme-progress: 1;
+}
+
+:root[data-mode="configure"] {
+  --mode-progress: 0;
+}
+
+:root[data-mode="run"] {
+  --mode-progress: 1;
 }
