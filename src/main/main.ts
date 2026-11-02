@@ -49,3 +49,13 @@ import { shell, ipcMain } from "electron";
 ipcMain.handle("open-external", async (_event, url: string) => {
   await shell.openExternal(url);
 });
+
+ipcMain.handle("window:set-zoom-factor", (event, factor: number) => {
+  const window = BrowserWindow.fromWebContents(event.sender);
+
+  if (!window || !Number.isFinite(factor)) return;
+
+  window.webContents.setZoomFactor(
+    Math.min(2, Math.max(0.5, factor)),
+  );
+});

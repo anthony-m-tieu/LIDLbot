@@ -23,6 +23,7 @@ import iconDocument from "../../../../assets/icons/icon-document.svg";
 import iconGithub from "../../../../assets/icons/icon-github.svg";
 import { useAnimations } from "../../../../contexts/AnimationContext";
 import { useTheme } from "../../../../contexts/ThemeContext";
+import { useScale } from "../../../../contexts/ScaleContext";
 
 const tabs = [
   { id: "file", label: "File" },
@@ -43,6 +44,7 @@ type DropdownPosition = {
 };
 
 export default function ApplicationMenu() {
+  const { scale, setScale } = useScale();
   const { theme, setTheme, resolvedTheme } = useTheme();
   const { animationsEnabled, toggleAnimations } = useAnimations();
   const { mode } = useMode();
@@ -288,32 +290,32 @@ export default function ApplicationMenu() {
                     >
                       <DropdownItem
                         label="50%"
-                        onClick={closeTab}
-                        selected={false}
+                        onClick={() => { setScale(50); closeTab(); }}
+                        selected={scale <= 50}
                         selectable={true}
                       />
                       <DropdownItem
                         label="75%"
-                        onClick={closeTab}
-                        selected={false}
+                        onClick={() => { setScale(75); closeTab(); }}
+                        selected={scale > 50 && scale <= 75}
                         selectable={true}
                       />
                       <DropdownItem
                         label="100%"
-                        onClick={closeTab}
-                        selected={true}
+                        onClick={() => { setScale(100); closeTab(); }}
+                        selected={scale > 75 && scale < 125}
                         selectable={true}
                       />
                       <DropdownItem
                         label="125%"
-                        onClick={closeTab}
-                        selected={false}
+                        onClick={() => { setScale(125); closeTab(); }}
+                        selected={scale >= 125 && scale < 150}
                         selectable={true}
                       />
                       <DropdownItem
                         label="150%"
-                        onClick={closeTab}
-                        selected={false}
+                        onClick={() => { setScale(150); closeTab(); }}
+                        selected={scale >= 150}
                         selectable={true}
                       />
                     </DropdownMenu>
@@ -338,19 +340,19 @@ export default function ApplicationMenu() {
                     >
                       <DropdownItem
                         label="Light"
-                        onClick={() => { closeTab(); setTheme("light"); }}
+                        onClick={() => { setTheme("light"); closeTab(); }}
                         selected={theme === "light"}
                         selectable={true}
                       />
                       <DropdownItem
                         label="Dark"
-                        onClick={() => { closeTab(); setTheme("dark"); }}
+                        onClick={() => { setTheme("dark"); closeTab(); }}
                         selected={theme === "dark"}
                         selectable={true}
                       />
                       <DropdownItem
                         label="System"
-                        onClick={() => { closeTab(); setTheme("system"); }}
+                        onClick={() => { setTheme("system"); closeTab(); }}
                         selected={theme === "system"}
                         selectable={true}
                       />

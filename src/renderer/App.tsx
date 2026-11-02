@@ -6,6 +6,7 @@ import {
 } from "./contexts/NavigationContext";
 import { AnimationProvider } from "./contexts/AnimationContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { ScaleProvider } from "./contexts/ScaleContext";
 
 function MainContent() {
   const { mode } = useMode();
@@ -28,24 +29,26 @@ function MainContent() {
 
 export default function App() {
   return (
-    <AnimationProvider>
-      <ThemeProvider>
-        <ModeProvider>
-          <NavigationProvider>
-            <div
-            className="body"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                minHeight: "100vh",
-              }}
-            >
-              <Toolbar />
-              <MainContent />
-            </div>
-          </NavigationProvider>
-        </ModeProvider>
-      </ThemeProvider>
-    </AnimationProvider>
+    <ScaleProvider>
+      <AnimationProvider>
+        <ThemeProvider>
+          <ModeProvider>
+            <NavigationProvider>
+              <div
+                className="body"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  minHeight: "100vh",
+                }}
+              >
+                <Toolbar />
+                <MainContent />
+              </div>
+            </NavigationProvider>
+          </ModeProvider>
+        </ThemeProvider>
+      </AnimationProvider>
+    </ScaleProvider>
   );
 }
