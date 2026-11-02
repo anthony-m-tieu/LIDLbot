@@ -8,8 +8,6 @@ Running from Source Code:
 
 TODO:
 
-- [ ] Add app scaling option under Preferences
-- [ ] Fix dark mode colouring of mode toggle and dropdown menus
 - [ ] Local storage of app preferences
 
 
@@ -22,3 +20,5 @@ Completed \[Toolbar\]:
 - [x] Fix theme change failing to update Toolbar background when window is small
 - [x] Fix sizing and positioning of dropdown item expanding arrow
 - [x] Make accent change with mode
+- [x] Add app scaling option under Preferences
+- [x] Fix dark mode colouring of mode toggle and dropdown menus

@@ -29,8 +29,8 @@ function MainContent() {
 
 export default function App() {
   return (
-    <ScaleProvider>
-      <AnimationProvider>
+    <AnimationProvider>
+      <ScaleProvider>
         <ThemeProvider>
           <ModeProvider>
             <NavigationProvider>
@@ -48,7 +48,7 @@ export default function App() {
             </NavigationProvider>
           </ModeProvider>
         </ThemeProvider>
-      </AnimationProvider>
-    </ScaleProvider>
+      </ScaleProvider>
+    </AnimationProvider>
   );
 }
