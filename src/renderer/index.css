@@ -38,8 +38,8 @@ main {
   flex: "1";
   --body-background: color-mix(
     in srgb,
-    var(--ui-fill-z0) calc((1 - var(--theme-progress)) * 100%),
-    var(--ui-fill-z1) calc(var(--theme-progress) * 100%)
+    var(--fill-z0) calc((1 - var(--theme-progress)) * 100%),
+    var(--fill-z1) calc(var(--theme-progress) * 100%)
   );
 
   background: var(--body-background);

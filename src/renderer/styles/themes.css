@@ -1,51 +1,3 @@
-@property --ui-fill-z0 {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #f8f8fa;
-}
-
-@property --ui-fill-z1 {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #ffffff;
-}
-
-@property --ui-stroke {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #e7eae5;
-}
-
-@property --ui-accent {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #699847;
-}
-
-@property --ui-accent-faint {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #fafbf9;
-}
-
-@property --font-h1 {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #313439;
-}
-
-@property --font-h2 {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #6d726b;
-}
-
-@property --font-h3 {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: #a5a8a3;
-}
-
 @property --theme-progress {
   syntax: "<number>";
   inherits: true;
@@ -58,91 +10,113 @@
   initial-value: 0;
 }
 
-:root,
-[data-theme="light"] {
-  color-scheme: light;
+:root {
+  /* Light */
+  --light-fill-z0: #f8f8fa;
+  --light-fill-z1: #ffffff;
 
-  /* Fill */
-  --ui-fill-z0: #f8f8fa;
-  --ui-fill-z1: #ffffff;
+  --light-stroke: #e7eae5;
 
-  /* Stroke */
-  --ui-stroke: #e7eae5;
+  --light-font-h1: #313439;
+  --light-font-h2: #6d726b;
+  --light-font-h3: #a5a8a3;
 
-  /* Font */
-  --font-h1: #313439;
-  --font-h2: #6d726b;
-  --font-h3: #a5a8a3;
-}
+  --light-accent-configure: #699847;
+  --light-accent-run: #a93f38;
+  --light-accent-faint-configure: #fafbf9;
+  --light-accent-faint-run: #fcfbfb;
 
-[data-theme="dark"] {
-  color-scheme: dark;
+  /* Dark */
+  --dark-fill-z0: #1f252c;
+  --dark-fill-z1: #171d24;
 
-  /* Fill */
-  --ui-fill-z0: #1f252c;
-  --ui-fill-z1: #171d24;
+  --dark-stroke: #2b3137;
 
-  /* Stroke */
-  --ui-stroke: #2b3137;
+  --dark-font-h1: #fbfbfc;
+  --dark-font-h2: #c3c9cf;
+  --dark-font-h3: #a5a8a3;
 
-  /* Font */
-  --font-h1: #fbfbfc;
-  --font-h2: #c3c9cf;
-  --font-h3: #a5a8a3;
+  --dark-accent-configure: #9cbe8c;
+  --dark-accent-run: #f58582;
+  --dark-accent-faint-configure: #282f32;
+  --dark-accent-faint-run: #282a30;
 }
 
 :root {
   --theme-progress: 0;
   --mode-progress: 0;
 
-  transition-property:
-    --ui-fill-z0, --ui-fill-z1, --ui-stroke, --font-h1, --font-h2, --font-h3,
-    --theme-progress, --mode-progress;
-
-  transition-duration:
-    1000ms, 1000ms, 1000ms, 1000ms, 1000ms, 1000ms, 1000ms, 260ms;
-
+  transition-property: --theme-progress, --mode-progress;
+  transition-duration: 1000ms, 260ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
-  /* Configure accent */
+  --fill-z0: color-mix(
+    in srgb,
+    var(--light-fill-z0) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-fill-z0) calc(var(--theme-progress) * 100%)
+  );
+
+  --fill-z1: color-mix(
+    in srgb,
+    var(--light-fill-z1) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-fill-z1) calc(var(--theme-progress) * 100%)
+  );
+
+  --stroke: color-mix(
+    in srgb,
+    var(--light-stroke) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-stroke) calc(var(--theme-progress) * 100%)
+  );
+
+  --font-h1: color-mix(
+    in srgb,
+    var(--light-font-h1) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-font-h1) calc(var(--theme-progress) * 100%)
+  );
+
+  --font-h2: color-mix(
+    in srgb,
+    var(--light-font-h2) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-font-h2) calc(var(--theme-progress) * 100%)
+  );
+
+  --font-h3: color-mix(
+    in srgb,
+    var(--light-font-h3) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-font-h3) calc(var(--theme-progress) * 100%)
+  );
+
+  /* --accent */
   --accent-configure: color-mix(
     in srgb,
-    #699847 calc((1 - var(--theme-progress)) * 100%),
-    #9cbe8c calc(var(--theme-progress) * 100%)
+    var(--light-accent-configure) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-accent-configure) calc(var(--theme-progress) * 100%)
   );
-
-  /* Run accent */
   --accent-run: color-mix(
     in srgb,
-    #a93f38 calc((1 - var(--theme-progress)) * 100%),
-    #f58582 calc(var(--theme-progress) * 100%)
+    var(--light-accent-run) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-accent-run) calc(var(--theme-progress) * 100%)
   );
-
-  /* Final accent */
-  --ui-accent: color-mix(
+  --accent: color-mix(
     in srgb,
     var(--accent-configure) calc((1 - var(--mode-progress)) * 100%),
     var(--accent-run) calc(var(--mode-progress) * 100%)
   );
 
-  /* Configure faint accent */
+  /* --accent-faint */
   --accent-faint-configure: color-mix(
     in srgb,
-    #fafbf9 calc((1 - var(--theme-progress)) * 100%),
-    #282f32 calc(var(--theme-progress) * 100%)
+    var(--light-accent-faint-configure) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-accent-faint-configure) calc(var(--theme-progress) * 100%)
   );
-
-  /* Run faint accent */
   --accent-faint-run: color-mix(
     in srgb,
-    #fcfbfb calc((1 - var(--theme-progress)) * 100%),
-    #282a30 calc(var(--theme-progress) * 100%)
+    var(--light-accent-faint-run) calc((1 - var(--theme-progress)) * 100%),
+    var(--dark-accent-faint-run) calc(var(--theme-progress) * 100%)
   );
-
-  /* Final faint accent */
-  --ui-accent-faint: color-mix(
+  --accent-faint: color-mix(
     in srgb,
     var(--accent-faint-configure) calc((1 - var(--mode-progress)) * 100%),
     var(--accent-faint-run) calc(var(--mode-progress) * 100%)

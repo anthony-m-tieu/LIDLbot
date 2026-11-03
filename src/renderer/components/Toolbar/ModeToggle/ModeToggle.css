@@ -3,7 +3,7 @@
   --toggle-padding: 3px;
 
   align-items: stretch;
-  border-color: var(--ui-stroke);
+  border-color: var(--stroke);
   border-radius: 8px;
   border-style: solid;
   border-width: 1px;
@@ -17,15 +17,14 @@
 
   --mode-toggle-background: color-mix(
     in srgb,
-    var(--ui-accent-faint) calc((1 - var(--theme-progress)) * 100%),
-    var(--ui-fill-z0) calc(var(--theme-progress) * 100%)
+    var(--accent-faint) calc((1 - var(--theme-progress)) * 100%),
+    var(--fill-z0) calc(var(--theme-progress) * 100%)
   );
 
   background: var(--mode-toggle-background);
 }
 
 .mode-toggle__indicator {
-  background: var(--ui-fill-z1);
   border-radius: 5px;
   bottom: var(--toggle-padding);
   box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
@@ -40,14 +39,15 @@
 
   --mode-toggle__indicator-background: color-mix(
     in srgb,
-    var(--ui-fill-z1) calc((1 - var(--theme-progress)) * 100%),
-    var(--ui-accent-faint) calc(var(--theme-progress) * 100%)
+    var(--fill-z1) calc((1 - var(--theme-progress)) * 100%),
+    var(--accent-faint) calc(var(--theme-progress) * 100%)
   );
 
   background: var(--mode-toggle__indicator-background);
 }
 
-.mode-toggle__option {
+.mode-toggle__option-configure,
+.mode-toggle__option-run {
   background: transparent;
   border-radius: 5px;
   border: 0;
@@ -56,10 +56,10 @@
   font-size: 12px;
   font-weight: 500;
   padding: 6px 12px;
+  pointer-events: auto;
   position: relative;
   white-space: nowrap;
   z-index: 1;
-  pointer-events: auto;
 }
 
 .mode-toggle__content {
@@ -68,6 +68,10 @@
   gap: 12px;
 }
 
-.mode-toggle__option[aria-pressed="true"] {
-  color: var(--ui-accent);
+.mode-toggle__option-configure[aria-pressed="true"] {
+  color: var(--accent-configure);
+}
+
+.mode-toggle__option-run[aria-pressed="true"] {
+  color: var(--accent-run);
 }

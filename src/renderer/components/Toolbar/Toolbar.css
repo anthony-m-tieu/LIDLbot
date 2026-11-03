@@ -4,9 +4,9 @@
   initial-value: 0px;
 }
 
-/* Toolbar */
 .toolbar {
   align-items: center;
+  background: var(--fill-z1);
   box-sizing: border-box;
   display: flex;
   height: 64px;
@@ -16,14 +16,13 @@
   position: relative;
   scrollbar-width: none;
   width: 100%;
-  background: var(--ui-fill-z1);
 
   transition: --navigation-ribbon-margin 260ms cubic-bezier(0.22, 1, 0.36, 1);
 
   --toolbar-stroke: color-mix(
     in srgb,
     transparent calc((1 - var(--theme-progress)) * 100%),
-    var(--ui-stroke) calc(var(--theme-progress) * 100%)
+    var(--stroke) calc(var(--theme-progress) * 100%)
   );
   outline: 2px solid var(--toolbar-stroke);
 }
@@ -35,25 +34,24 @@
 /* Toolbar Edge Gradients */
 .toolbar__edge-gradient-left,
 .toolbar__edge-gradient-right {
-  z-index: 2;
   height: 64px;
+  pointer-events: none;
   position: absolute;
   top: 0;
   width: 24px;
-  pointer-events: none;
+  z-index: 2;
 }
 
 .toolbar__edge-gradient-left {
-  background: linear-gradient(270deg, transparent 0%, var(--ui-fill-z1) 100%);
+  background: linear-gradient(270deg, transparent 0%, var(--fill-z1) 100%);
   left: 0;
 }
 
 .toolbar__edge-gradient-right {
-  background: linear-gradient(90deg, transparent 0%, var(--ui-fill-z1) 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--fill-z1) 100%);
   right: 0;
 }
 
-/* Toolbar Contents */
 .toolbar__left,
 .toolbar__left-content,
 .toolbar__center,
@@ -66,40 +64,40 @@
 }
 
 .toolbar__left {
-  z-index: 1;
   flex: 1;
   justify-content: left;
   justify-self: start;
   margin-right: var(--navigation-ribbon-margin);
+  z-index: 1;
 }
 
 .toolbar__left-content {
+  background: var(--fill-z1);
   gap: 32px;
   justify-content: left;
   justify-self: start;
   padding-right: 4px;
-  background: var(--ui-fill-z1);
 }
 
 .toolbar__center {
-  z-index: 0;
   justify-content: center;
   justify-self: center;
+  z-index: 0;
 }
 
 .toolbar__right {
-  z-index: 1;
   flex: 1;
   justify-content: end;
   justify-self: end;
   margin-left: var(--navigation-ribbon-margin);
+  z-index: 1;
 }
 
 .toolbar__right-content {
+  background: var(--fill-z1);
   justify-content: end;
   justify-self: end;
   padding-left: 16px;
-  background: var(--ui-fill-z1);
 }
 
 .toolbar__logo {
@@ -110,11 +108,11 @@
 }
 
 .toolbar__separator {
-  height: 32px;
-  width: 1px;
-  border-radius: 1px;
   background: transparent;
+  border-radius: 1px;
+  height: 32px;
   transition: background 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 1px;
 }
 
 .toolbar__separator-left {
@@ -127,5 +125,5 @@
 
 .toolbar__left--narrow .toolbar__separator,
 .toolbar__right--narrow .toolbar__separator {
-  background: var(--ui-stroke);
+  background: var(--stroke);
 }

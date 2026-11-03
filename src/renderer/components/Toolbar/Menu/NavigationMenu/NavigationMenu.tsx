@@ -22,31 +22,19 @@ type IndicatorStyle = CSSProperties & {
   '--indicator-width': string;
 };
 
-type NavigationMenuProps = {
-  onMarginChange: (margin: number) => void;
-};
-
-export default function NavigationMenu({
-  onMarginChange,
-}: NavigationMenuProps) {
+export default function NavigationMenu() {
   const { mode } = useMode();
-  const {
-    configureTab,
-    runTab,
-    setConfigureTab,
-    setRunTab,
-  } = useNavigation();
+  const { configureTab, runTab, setConfigureTab, setRunTab } = useNavigation();
 
   const tabs = mode === 'configure' ? configureTabs : runTabs;
   const selectedTab = mode === 'configure' ? configureTab : runTab;
-
-  const navRef = useRef<HTMLElement>(null);
-  const tabRefs = useRef(new Map<string, HTMLButtonElement>());
-
   const [indicator, setIndicator] = useState({
     left: 0,
     width: 0
   });
+
+  const navRef = useRef<HTMLElement>(null);
+  const tabRefs = useRef(new Map<string, HTMLButtonElement>());
 
   const updateIndicator = useCallback(() => {
     const nav = navRef.current;
@@ -64,7 +52,6 @@ export default function NavigationMenu({
   }, [selectedTab]);
 
   useLayoutEffect(() => {
-    onMarginChange(mode === 'configure' ? 0 : -139.96895);
     updateIndicator();
 
     const nav = navRef.current;
@@ -82,7 +69,7 @@ export default function NavigationMenu({
     return () => {
       observer.disconnect();
     };
-  }, [mode, selectedTab, onMarginChange, updateIndicator]);
+  }, [mode, selectedTab, updateIndicator]);
 
   function handleTabClick(tabId: ConfigureTabs | RunTabs) {
     if (mode === 'configure') {

@@ -3,7 +3,7 @@ import "./DropdownMenu.css";
 
 type DropdownMenuProps = {
   children: ReactNode;
-  aria_label?: string,
+  ariaLabel?: string,
   top?: number;
   left?: number;
   ref?: Ref<HTMLDivElement>;
@@ -12,7 +12,7 @@ type DropdownMenuProps = {
 
 export default function DropdownMenu({
   children,
-  aria_label,
+  ariaLabel,
   top,
   left,
   ref,
@@ -23,7 +23,7 @@ export default function DropdownMenu({
       ref={ref}
       className="dropdown-menu" 
       role="menu"
-      aria-label={aria_label}
+      aria-label={ariaLabel}
       style={{
         top,
         left,

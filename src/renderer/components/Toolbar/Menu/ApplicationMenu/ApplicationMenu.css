@@ -1,21 +1,18 @@
-/* Application Menu Indicator */
 .application-menu__indicator {
-  background: var(--ui-accent);
+  background: var(--accent);
 }
 
 .application-menu__tab:hover {
-  background: var(--ui-accent-faint);
-  color: var(--ui-accent);
+  background: var(--accent-faint);
+  color: var(--accent);
 }
 
 .application-menu__tab[aria-expanded="true"] {
-  color: var(--ui-accent);
+  color: var(--accent);
 }
 
-/* Application Menu Dropdown */
-
 .application-menu__separator {
+  background: var(--stroke);
   height: 1px;
   margin: 4px 8px;
-  background: var(--ui-stroke);
 }

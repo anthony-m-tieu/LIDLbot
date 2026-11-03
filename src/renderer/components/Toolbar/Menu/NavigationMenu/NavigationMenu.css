@@ -1,18 +1,17 @@
-/* Navigation Menu */
 .navigation-menu {
   justify-content: center;
   width: 347.391px;
 }
 
 .navigation-menu__indicator {
-  background: var(--ui-accent);
+  background: var(--accent);
 }
 
 .navigation-menu__tab:hover {
-  background: var(--ui-accent-faint);
-  color: var(--ui-accent);
+  background: var(--accent-faint);
+  color: var(--accent);
 }
 
 .navigation-menu__tab[aria-current="page"] {
-  color: var(--ui-accent);
+  color: var(--accent);
 }

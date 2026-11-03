@@ -37,8 +37,8 @@
   font-weight: 500;
   height: 100%;
   padding: 0px var(--menu__tab-padding) 0px var(--menu__tab-padding);
-  white-space: nowrap;
   pointer-events: auto;
+  white-space: nowrap;
 
   transition:
     background-color 100ms ease,

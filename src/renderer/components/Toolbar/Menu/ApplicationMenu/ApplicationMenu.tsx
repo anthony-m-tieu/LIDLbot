@@ -7,23 +7,23 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
+import iconDocument from "../../../../assets/icons/icon-document.svg";
+import iconFolder from "../../../../assets/icons/icon-folder.svg";
+import iconGithub from "../../../../assets/icons/icon-github.svg";
+import iconHappy from "../../../../assets/icons/icon-happy.svg";
+import iconMonitor from "../../../../assets/icons/icon-monitor.svg";
+import iconNewFile from "../../../../assets/icons/icon-new-file.svg";
+import iconSad from "../../../../assets/icons/icon-sad.svg";
+import iconSave from "../../../../assets/icons/icon-save.svg";
+import iconTheme from "../../../../assets/icons/icon-theme.svg";
+import { useAnimations } from "../../../../contexts/AnimationContext";
+import { useMode } from "../../../../contexts/ModeContext";
+import { useScale } from "../../../../contexts/ScaleContext";
+import { useTheme } from "../../../../contexts/ThemeContext";
 import "../Menu.css";
 import "./ApplicationMenu.css";
-import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import DropdownItem from "./DropdownMenu/DropdownItem/DropdownItem";
-import { useMode } from "../../../../contexts/ModeContext";
-import iconNewFile from "../../../../assets/icons/icon-new-file.svg";
-import iconFolder from "../../../../assets/icons/icon-folder.svg";
-import iconSave from "../../../../assets/icons/icon-save.svg";
-import iconMonitor from "../../../../assets/icons/icon-monitor.svg";
-import iconTheme from "../../../../assets/icons/icon-theme.svg";
-import iconHappy from "../../../../assets/icons/icon-happy.svg";
-import iconSad from "../../../../assets/icons/icon-sad.svg";
-import iconDocument from "../../../../assets/icons/icon-document.svg";
-import iconGithub from "../../../../assets/icons/icon-github.svg";
-import { useAnimations } from "../../../../contexts/AnimationContext";
-import { useTheme } from "../../../../contexts/ThemeContext";
-import { useScale } from "../../../../contexts/ScaleContext";
+import DropdownMenu from "./DropdownMenu/DropdownMenu";
 
 const tabs = [
   { id: "file", label: "File" },
@@ -44,16 +44,18 @@ type DropdownPosition = {
 };
 
 export default function ApplicationMenu() {
-  const { scale, setScale } = useScale();
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const { animationsEnabled, toggleAnimations } = useAnimations();
   const { mode } = useMode();
+
+  const { scale, setScale } = useScale();
+  const { theme, setTheme } = useTheme();
+  const { animationsEnabled, toggleAnimations } = useAnimations();
+
   const [selectedTab, setSelectedTab] = useState<TabId | null>(null);
   const [indicator, setIndicator] = useState({
     left: 0,
-    width: 0,
-    ready: false,
+    width: 0
   });
+  
   const [dropdownPosition, setDropdownPosition] =
     useState<DropdownPosition | null>(null);
 
@@ -74,8 +76,7 @@ export default function ApplicationMenu() {
 
     setIndicator({
       left: buttonRect.left - navRect.left + nav.scrollLeft,
-      width: buttonRect.width,
-      ready: true,
+      width: buttonRect.width
     });
 
     setDropdownPosition({
@@ -135,7 +136,7 @@ export default function ApplicationMenu() {
   const indicatorStyle: IndicatorStyle = {
     "--indicator-x": `${indicator.left}px`,
     "--indicator-width": `${indicator.width}px`,
-    visibility: indicator.ready && selectedTab ? "visible" : "hidden",
+    visibility: selectedTab ? "visible" : "hidden",
   };
 
   function closeTab() {
@@ -181,7 +182,7 @@ export default function ApplicationMenu() {
         createPortal(
           <DropdownMenu
             ref={dropdownRef}
-            aria-label={`${
+            ariaLabel={`${
               tabs.find((tab) => tab.id === selectedTab)?.label
             } menu`}
             top={dropdownPosition.top}
@@ -286,7 +287,7 @@ export default function ApplicationMenu() {
                   label="App Scale"
                   submenu={
                     <DropdownMenu
-                      aria-label="app scale menu"
+                      ariaLabel="app scale menu"
                     >
                       <DropdownItem
                         label="50%"
@@ -336,7 +337,7 @@ export default function ApplicationMenu() {
                   label="App Theme"
                   submenu={
                     <DropdownMenu
-                      aria-label="app scale menu"
+                      ariaLabel="app scale menu"
                     >
                       <DropdownItem
                         label="Light"

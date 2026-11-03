@@ -1,18 +1,18 @@
 .dropdown-menu {
-  position: fixed;
-  z-index: 10000;
+  border-radius: 8px;
+  border: 1px solid var(--stroke);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
   display: flex;
   flex-direction: column;
   min-width: 50px;
   padding: 3px;
-  border: 1px solid var(--ui-stroke);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  position: fixed;
+  z-index: 10000;
 
   --dropdown-menu-background: color-mix(
     in srgb,
-    var(--ui-fill-z1) calc((1 - var(--theme-progress)) * 100%),
-    var(--ui-fill-z0) calc(var(--theme-progress) * 100%)
+    var(--fill-z1) calc((1 - var(--theme-progress)) * 100%),
+    var(--fill-z0) calc(var(--theme-progress) * 100%)
   );
 
   background: var(--dropdown-menu-background);

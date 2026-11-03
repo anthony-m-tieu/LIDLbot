@@ -1,12 +1,12 @@
 import Toolbar from "./components/Toolbar/Toolbar";
+import { AnimationProvider } from "./contexts/AnimationContext";
 import { ModeProvider, useMode } from "./contexts/ModeContext";
 import {
   NavigationProvider,
   useNavigation,
 } from "./contexts/NavigationContext";
-import { AnimationProvider } from "./contexts/AnimationContext";
-import { ThemeProvider } from "./contexts/ThemeContext";
 import { ScaleProvider } from "./contexts/ScaleContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 function MainContent() {
   const { mode } = useMode();

@@ -30,7 +30,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const resolvedTheme = theme === "system" ? systemTheme : theme;
 
-  // Track operating system theme changes.
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -45,7 +44,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  // Apply the resolved theme.
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = resolvedTheme;
   }, [resolvedTheme]);

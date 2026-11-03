@@ -46,7 +46,7 @@ export default function ModeToggle() {
       <button
         ref={configureRef}
         type="button"
-        className="mode-toggle__option"
+        className="mode-toggle__option-configure"
         aria-pressed={mode === 'configure'}
         onClick={() => setMode('configure')}
       >
@@ -67,7 +67,7 @@ export default function ModeToggle() {
       <button
         ref={runRef}
         type="button"
-        className="mode-toggle__option"
+        className="mode-toggle__option-run"
         aria-pressed={mode === 'run'}
         onClick={() => setMode('run')}
       >
