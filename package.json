@@ -1,11 +1,11 @@
 {
   "name": "lidlbot",
-  "productName": "lidlbot",
+  "productName": "LIDLbot",
   "version": "1.0.0",
   "private": true,
-  "description": "My Electron application description",
+  "description": "A configurable platform for psychology and linguistic experiments with CUIs.",
   "keywords": [],
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "author": {
     "name": "anthony-m-tieu",
     "email": "252030339+anthony-m-tieu@users.noreply.github.com"
@@ -13,6 +13,10 @@
   "main": ".vite/build/main.cjs",
   "scripts": {
     "start": "electron-forge start",
+    "start:web": "vite --config vite/vite.renderer.config.mts",
+    "build:web": "vite build --config vite/vite.renderer.config.mts",
+    "build:web:pages": "vite build --config vite/vite.renderer.config.mts --mode github-pages",
+    "preview:web": "vite preview --config vite/vite.renderer.config.mts",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "release": "electron-forge release",

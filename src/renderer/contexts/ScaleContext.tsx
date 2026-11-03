@@ -42,12 +42,8 @@ export function ScaleProvider({ children }: { children: ReactNode }) {
 
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
-
-      // Ease out
       const eased = 1 - Math.pow(1 - progress, 3);
-
       const current = start + difference * eased;
-
       window.electron.setZoomFactor(current / 100);
 
       setScaleState(current);
@@ -59,7 +55,6 @@ export function ScaleProvider({ children }: { children: ReactNode }) {
         setScaleState(target);
       }
     };
-
     animationRef.current = requestAnimationFrame(animate);
   };
 

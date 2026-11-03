@@ -1,9 +1,8 @@
-/// <reference types="@electron-forge/plugin-vite/forge-vite-env" />
 export {};
 
 declare global {
   interface Window {
-    electron: {
+    electron?: {
       openExternal: (url: string) => Promise<void>;
       setZoomFactor: (factor: number) => Promise<void>;
     };

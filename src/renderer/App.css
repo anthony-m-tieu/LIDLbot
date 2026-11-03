@@ -1,0 +1,18 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  --app-background: color-mix(
+    in srgb,
+    var(--fill-z0) calc((1 - var(--theme-progress)) * 100%),
+    var(--fill-z1) calc(var(--theme-progress) * 100%)
+  );
+
+  background: var(--app-background);
+}
+
+.app__content {
+  flex: 1;
+}

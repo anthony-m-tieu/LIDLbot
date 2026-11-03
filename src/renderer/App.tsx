@@ -1,31 +1,10 @@
 import Toolbar from "./components/Toolbar/Toolbar";
 import { AnimationProvider } from "./contexts/AnimationContext";
-import { ModeProvider, useMode } from "./contexts/ModeContext";
-import {
-  NavigationProvider,
-  useNavigation,
-} from "./contexts/NavigationContext";
+import { ModeProvider } from "./contexts/ModeContext";
+import { NavigationProvider } from "./contexts/NavigationContext";
 import { ScaleProvider } from "./contexts/ScaleContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
-
-function MainContent() {
-  const { mode } = useMode();
-  const { configureTab, runTab } = useNavigation();
-
-  return (
-    <div className="body">
-      {/* <p>
-        Current mode: <strong>{mode}</strong>
-      </p>
-      <p>
-        Current configure tab: <strong>{configureTab}</strong>
-      </p>
-      <p>
-        Current run tab: <strong>{runTab}</strong>
-      </p> */}
-    </div>
-  );
-}
+import "./App.css";
 
 export default function App() {
   return (
@@ -34,16 +13,9 @@ export default function App() {
         <ThemeProvider>
           <ModeProvider>
             <NavigationProvider>
-              <div
-                className="body"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  minHeight: "100vh",
-                }}
-              >
+              <div className="app">
                 <Toolbar />
-                <MainContent />
+                <div className="app__content"/>
               </div>
             </NavigationProvider>
           </ModeProvider>
