@@ -147,3 +147,18 @@ out/
 
 # VSCode settings
 .vscode/
+
+# Private keys and certificates
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+
+# Local environment files
+.env.local
+.env.*.local
+
+# Local OS files
+.DS_Store
+Thumbs.db
