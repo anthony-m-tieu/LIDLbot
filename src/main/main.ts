@@ -24,6 +24,7 @@ const createWindow = () => {
   });
   configureWindowSecurity(mainWindow);
   mainWindow.setMenuBarVisibility(false);
+  mainWindow.webContents.setZoomFactor(1);
   mainWindow.maximize();
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
