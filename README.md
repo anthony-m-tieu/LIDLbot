@@ -20,12 +20,12 @@ This project is currently under development, to be built as the successor to the
 ## To-Do:
 
 - [ ] Add caching of app preferences.
-- [ ] Implement web versions of opening external links and app scaling. 
-- [ ] Deploy to GitHub pages
+- [ ] Deploy to GitHub pages.
 
 ## Completed:
 
 ### Functionality:
+- [x] Implement web versions of opening external links and app scaling. 
 
 ### Visual Components:
 

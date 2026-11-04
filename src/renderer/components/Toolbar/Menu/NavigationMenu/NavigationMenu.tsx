@@ -4,6 +4,7 @@ import { useMode } from '../../../../contexts/ModeContext';
 import { ConfigureTabs, RunTabs, useNavigation } from '../../../../contexts/NavigationContext';
 import '../Menu.css';
 import './NavigationMenu.css';
+import platform from '../../../../platform';
 
 const configureTabs: { id: ConfigureTabs; label: string }[] = [
   { id: 'project', label: 'Project' },
@@ -46,8 +47,8 @@ export default function NavigationMenu() {
     const buttonRect = selectedButton.getBoundingClientRect();
 
     setIndicator({
-      left: buttonRect.left - navRect.left + nav.scrollLeft,
-      width: buttonRect.width
+      left: platform.toLayoutPixels(buttonRect.left - navRect.left + nav.scrollLeft),
+      width: platform.toLayoutPixels(buttonRect.width)
     });
   }, [selectedTab]);
 

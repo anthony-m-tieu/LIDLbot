@@ -4,8 +4,11 @@ import ApplicationMenu from "./Menu/ApplicationMenu/ApplicationMenu";
 import NavigationMenu from "./Menu/NavigationMenu/NavigationMenu";
 import ModeToggle from "./ModeToggle/ModeToggle";
 import "./Toolbar.css";
+import platform from "../../platform";
+import { useScale } from "../../contexts/ScaleContext";
 
 export default function Toolbar() {
+  const { scale } = useScale();
   const { mode } = useMode();
   
   const leftRef = useRef<HTMLDivElement>(null);
@@ -21,8 +24,8 @@ export default function Toolbar() {
     if (!left || !right) return;
 
     const observer = new ResizeObserver(() => {
-      setLeftNarrow(left.getBoundingClientRect().width <= 312);
-      setRightNarrow(right.getBoundingClientRect().width <= 222);
+      setLeftNarrow(platform.toLayoutPixels(left.getBoundingClientRect().width) <= 312);
+      setRightNarrow(platform.toLayoutPixels(right.getBoundingClientRect().width) <= 222);
     });
 
     observer.observe(left);
@@ -46,7 +49,7 @@ export default function Toolbar() {
   // - As such, the NavigationRibbon is held at a constant width, regardless of the number of tabs.
   // - This fixes the indicator animation problem, but adds unwanted space in the Toolbar when on "run" mode.
   // - The current solution is to add negative margins so that other components can overlap and hide the unwanted space.
-  const margin = mode === "configure" ? 0 : -139.96895;
+  const margin = mode === "configure" ? 0 : platform.toLayoutPixels(-139.96895);
 
   const toolbarStyle = {
     "--navigation-ribbon-margin": `${margin}px`,

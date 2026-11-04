@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from "react";
 import { useAnimations } from "../contexts/AnimationContext";
+import platform from "../platform";
 
 type ScaleContextType = {
   scale: number;
@@ -23,7 +24,7 @@ export function ScaleProvider({ children }: { children: ReactNode }) {
     const target = Math.min(200, Math.max(50, newScale));
 
     if (!animationsEnabled) { 
-      await window.electron.setZoomFactor(target / 100);
+      await platform.window.setZoomFactor(target / 100);
       setScaleState(target);
       return;
     }
@@ -44,7 +45,7 @@ export function ScaleProvider({ children }: { children: ReactNode }) {
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = start + difference * eased;
-      window.electron.setZoomFactor(current / 100);
+      platform.window.setZoomFactor(current / 100);
 
       setScaleState(current);
 

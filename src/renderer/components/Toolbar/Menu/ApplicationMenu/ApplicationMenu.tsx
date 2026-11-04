@@ -24,6 +24,7 @@ import "../Menu.css";
 import "./ApplicationMenu.css";
 import DropdownItem from "./DropdownMenu/DropdownItem/DropdownItem";
 import DropdownMenu from "./DropdownMenu/DropdownMenu";
+import platform from "../../../../platform";
 
 const tabs = [
   { id: "file", label: "File" },
@@ -53,9 +54,9 @@ export default function ApplicationMenu() {
   const [selectedTab, setSelectedTab] = useState<TabId | null>(null);
   const [indicator, setIndicator] = useState({
     left: 0,
-    width: 0
+    width: 0,
   });
-  
+
   const [dropdownPosition, setDropdownPosition] =
     useState<DropdownPosition | null>(null);
 
@@ -75,13 +76,13 @@ export default function ApplicationMenu() {
     const buttonRect = button.getBoundingClientRect();
 
     setIndicator({
-      left: buttonRect.left - navRect.left + nav.scrollLeft,
-      width: buttonRect.width
+      left: platform.toLayoutPixels(buttonRect.left - navRect.left + nav.scrollLeft),
+      width: platform.toLayoutPixels(buttonRect.width),
     });
 
     setDropdownPosition({
-      top: buttonRect.bottom,
-      left: buttonRect.left,
+      top: platform.toLayoutPixels(buttonRect.bottom),
+      left: platform.toLayoutPixels(buttonRect.left),
     });
   }, [selectedTab]);
 
@@ -187,7 +188,7 @@ export default function ApplicationMenu() {
             } menu`}
             top={dropdownPosition.top}
             left={dropdownPosition.left}
-            minWidth={selectedTab === "preferences" ? 235 : undefined}
+            minWidth={selectedTab === "preferences" ? 245 : undefined}
           >
             {selectedTab === "file" && (
               <>
@@ -286,36 +287,49 @@ export default function ApplicationMenu() {
                   }
                   label="App Scale"
                   submenu={
-                    <DropdownMenu
-                      ariaLabel="app scale menu"
-                    >
+                    <DropdownMenu ariaLabel="app scale menu">
                       <DropdownItem
                         label="50%"
-                        onClick={() => { setScale(50); closeTab(); }}
+                        onClick={() => {
+                          setScale(50);
+                          closeTab();
+                        }}
                         selected={scale <= 50}
                         selectable={true}
                       />
                       <DropdownItem
                         label="75%"
-                        onClick={() => { setScale(75); closeTab(); }}
+                        onClick={() => {
+                          setScale(75);
+                          closeTab();
+                        }}
                         selected={scale > 50 && scale <= 75}
                         selectable={true}
                       />
                       <DropdownItem
                         label="100%"
-                        onClick={() => { setScale(100); closeTab(); }}
+                        onClick={() => {
+                          setScale(100);
+                          closeTab();
+                        }}
                         selected={scale > 75 && scale < 125}
                         selectable={true}
                       />
                       <DropdownItem
                         label="125%"
-                        onClick={() => { setScale(125); closeTab(); }}
+                        onClick={() => {
+                          setScale(125);
+                          closeTab();
+                        }}
                         selected={scale >= 125 && scale < 150}
                         selectable={true}
                       />
                       <DropdownItem
                         label="150%"
-                        onClick={() => { setScale(150); closeTab(); }}
+                        onClick={() => {
+                          setScale(150);
+                          closeTab();
+                        }}
                         selected={scale >= 150}
                         selectable={true}
                       />
@@ -336,24 +350,31 @@ export default function ApplicationMenu() {
                   }
                   label="App Theme"
                   submenu={
-                    <DropdownMenu
-                      ariaLabel="app scale menu"
-                    >
+                    <DropdownMenu ariaLabel="app scale menu">
                       <DropdownItem
                         label="Light"
-                        onClick={() => { setTheme("light"); closeTab(); }}
+                        onClick={() => {
+                          setTheme("light");
+                          closeTab();
+                        }}
                         selected={theme === "light"}
                         selectable={true}
                       />
                       <DropdownItem
                         label="Dark"
-                        onClick={() => { setTheme("dark"); closeTab(); }}
+                        onClick={() => {
+                          setTheme("dark");
+                          closeTab();
+                        }}
                         selected={theme === "dark"}
                         selectable={true}
                       />
                       <DropdownItem
                         label="System"
-                        onClick={() => { setTheme("system"); closeTab(); }}
+                        onClick={() => {
+                          setTheme("system");
+                          closeTab();
+                        }}
                         selected={theme === "system"}
                         selectable={true}
                       />
@@ -374,7 +395,9 @@ export default function ApplicationMenu() {
                   }
                   label="App Animations"
                   secondaryText={animationsEnabled ? "Enabled" : "Disabled"}
-                  onClick={() => { toggleAnimations(); }}
+                  onClick={() => {
+                    toggleAnimations();
+                  }}
                 />
               </>
             )}
@@ -411,7 +434,7 @@ export default function ApplicationMenu() {
                   label="GitHub"
                   onClick={() => {
                     closeTab();
-                    void window.electron.openExternal(
+                    void platform.openExternal(
                       "https://github.com/anthony-m-tieu/LIDLbot",
                     );
                   }}
