@@ -6,15 +6,13 @@ const ALLOWED_EXTERNAL_URLS = new Set([
 ]);
 
 export function registerExternalIpc(): void {
-  ipcMain.handle("open-external", async (event, value: unknown) => {
+  ipcMain.handle("external:open", async (event, value: unknown) => {
     if (!isTrustedAppFrame(event)) {
       throw new Error("Untrusted IPC sender");
     }
-
     if (typeof value !== "string" || !ALLOWED_EXTERNAL_URLS.has(value)) {
       throw new Error("External URL not allowed");
     }
-
     await shell.openExternal(value);
   });
 }

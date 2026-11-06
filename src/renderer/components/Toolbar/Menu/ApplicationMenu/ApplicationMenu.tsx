@@ -15,7 +15,10 @@ import iconMonitor from "../../../../assets/icons/icon-monitor.svg";
 import iconNewFile from "../../../../assets/icons/icon-new-file.svg";
 import iconSad from "../../../../assets/icons/icon-sad.svg";
 import iconSave from "../../../../assets/icons/icon-save.svg";
+import iconSaveAs from "../../../../assets/icons/icon-save-as.svg";
 import iconTheme from "../../../../assets/icons/icon-theme.svg";
+import iconUpload from "../../../../assets/icons/icon-upload.svg";
+import iconDownload from "../../../../assets/icons/icon-download.svg";
 import { useAnimations } from "../../../../contexts/AnimationContext";
 import { useMode } from "../../../../contexts/ModeContext";
 import { useScale } from "../../../../contexts/ScaleContext";
@@ -25,6 +28,7 @@ import "./ApplicationMenu.css";
 import DropdownItem from "./DropdownMenu/DropdownItem/DropdownItem";
 import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import platform from "../../../../platform";
+import { useProject } from "../../../../contexts/ProjectContext";
 
 const tabs = [
   { id: "file", label: "File" },
@@ -46,6 +50,14 @@ type DropdownPosition = {
 
 export default function ApplicationMenu() {
   const { mode } = useMode();
+  const {
+    project,
+    isDirty,
+    newProject,
+    openProject,
+    saveProject,
+    saveProjectAs,
+  } = useProject();
 
   const { scale, setScale } = useScale();
   const { theme, setTheme } = useTheme();
@@ -76,7 +88,9 @@ export default function ApplicationMenu() {
     const buttonRect = button.getBoundingClientRect();
 
     setIndicator({
-      left: platform.toLayoutPixels(buttonRect.left - navRect.left + nav.scrollLeft),
+      left: platform.toLayoutPixels(
+        buttonRect.left - navRect.left + nav.scrollLeft,
+      ),
       width: platform.toLayoutPixels(buttonRect.width),
     });
 
@@ -207,7 +221,10 @@ export default function ApplicationMenu() {
                     }
                     label="New Project"
                     secondaryText="Ctrl N"
-                    onClick={closeTab}
+                    onClick={() => {
+                      newProject("Memory Test");
+                      closeTab();
+                    }}
                   />
                 )}
                 <DropdownItem
@@ -215,16 +232,19 @@ export default function ApplicationMenu() {
                     <span
                       className="icon"
                       style={{
-                        maskImage: `url("${iconFolder}")`,
-                        WebkitMaskImage: `url("${iconFolder}")`,
+                        maskImage: `url("${platform.isElectron ? iconFolder : iconUpload }")`,
+                        WebkitMaskImage: `url("${platform.isElectron ? iconFolder : iconUpload }")`,
                         aspectRatio: "14 / 14",
                       }}
                       aria-hidden="true"
                     />
                   }
-                  label="Open Project"
+                  label={ platform.isElectron ? "Open Project" : "Upload Project" }
                   secondaryText="Ctrl O"
-                  onClick={closeTab}
+                  onClick={() => {
+                    openProject();
+                    closeTab();
+                  }}
                 />
                 {mode === "configure" && (
                   <DropdownItem
@@ -232,34 +252,40 @@ export default function ApplicationMenu() {
                       <span
                         className="icon"
                         style={{
-                          maskImage: `url("${iconSave}")`,
-                          WebkitMaskImage: `url("${iconSave}")`,
+                          maskImage: `url("${platform.isElectron ? iconSave : iconDownload }")`,
+                          WebkitMaskImage: `url("${platform.isElectron ? iconSave : iconDownload }")`,
                           aspectRatio: "14 / 14",
                         }}
                         aria-hidden="true"
                       />
                     }
-                    label="Save Project"
+                    label={ platform.isElectron ? "Save Project" : "Download Project" }
                     secondaryText="Ctrl S"
-                    onClick={closeTab}
+                    onClick={() => {
+                      saveProject();
+                      closeTab();
+                    }}
                   />
                 )}
-                {mode === "configure" && (
+                {mode === "configure" && platform.isElectron && (
                   <DropdownItem
                     icon={
                       <span
+                        className="icon"
                         style={{
-                          display: "inline-block",
-                          width: "14px",
-                          height: "14px",
-                          flexShrink: 0,
+                          maskImage: `url("${iconSaveAs}")`,
+                          WebkitMaskImage: `url("${iconSaveAs}")`,
+                          aspectRatio: "14 / 14",
                         }}
                         aria-hidden="true"
                       />
                     }
                     label="Save Project As"
                     secondaryText="Shift Ctrl S"
-                    onClick={closeTab}
+                    onClick={() => {
+                      saveProjectAs();
+                      closeTab();
+                    }}
                   />
                 )}
                 <div className="application-menu__separator" />
@@ -434,7 +460,7 @@ export default function ApplicationMenu() {
                   label="GitHub"
                   onClick={() => {
                     closeTab();
-                    void platform.openExternal(
+                    void platform.external.openExternal(
                       "https://github.com/anthony-m-tieu/LIDLbot",
                     );
                   }}

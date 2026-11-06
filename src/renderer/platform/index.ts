@@ -3,9 +3,11 @@ import { detectPlatform } from "./detectPlatform";
 import { electronPlatform } from "./electron";
 import { webPlatform } from "./web";
 
-const platform: PlatformAPI =
-  detectPlatform() === "electron"
-    ? electronPlatform
-    : webPlatform;
+const isElectron = detectPlatform() === "electron";
+
+const platform: PlatformAPI = {
+  ...(isElectron ? electronPlatform : webPlatform),
+  isElectron,
+};
 
 export default platform;
